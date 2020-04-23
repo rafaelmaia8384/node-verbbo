@@ -1,0 +1,65 @@
+{
+  "development": {
+    "username": "root",
+    "password": "rafael110786MYSQL",
+    "database": "verbbo_dev",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "dialectOptions": {
+        "dateStrings": true,
+        "typeCast": true
+    },
+    "timezone": "-03:00",
+    "logging": false,
+    "storage": {
+        "endPoint": "s3-sa-east-1.amazonaws.com",
+        "bucketName": "verbbo",
+        "folderName": "dev",
+        "accessKey": "AKIAXKILMFYEEFJ44WN5",
+        "secretKey": "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"
+    },
+    "tokenKey": "VERBBO-TOKEN-KEY-1234567890"
+  },
+  "test": {
+    "username": "root",
+    "password": "rafael110786MYSQL",
+    "database": "verbbo_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "dialectOptions": {
+        "dateStrings": true,
+        "typeCast": true
+    },
+    "timezone": "-03:00",
+    "logging": false,
+    "storage": {
+        "endPoint": "s3-sa-east-1.amazonaws.com",
+        "bucketName": "verbbo",
+        "folderName": "test",
+        "accessKey": "AKIAXKILMFYEEFJ44WN5",
+        "secretKey": "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"
+    },
+    "tokenKey": "VERBBO-TOKEN-KEY-1234567890"
+  },
+  "production": {
+    "username": "root",
+    "password": "rafael110786MYSQL",
+    "database": "verbbo_prod",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "dialectOptions": {
+        "dateStrings": true,
+        "typeCast": true
+    },
+    "timezone": "-03:00",
+    "logging": false,
+    "storage": {
+        "endPoint": "s3-sa-east-1.amazonaws.com",
+        "bucketName": "verbbo",
+        "folderName": "prod",
+        "accessKey": "AKIAXKILMFYEEFJ44WN5",
+        "secretKey": "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"
+    },
+    "tokenKey": "VERBBO-TOKEN-KEY-1234567890"
+  }
+}

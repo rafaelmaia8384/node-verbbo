@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="../css/painel.css" /> -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <main id="app">
+        <div class="header">
+            <div class="logo">Verbbo</div>
+        </div>
+        <div class="mainrow">
+            <div class="leftcolumn">
+                <div class="profile">Profile</div>
+                <div class="menu">
+                    <div class="button" v-on:click="addComentario">Dash board</div>
+                    <div class="button" @click="clearComentarios">Meus portais</div>
+                    <div class="button">Minhas publicações</div>
+                    <div class="button">Minhas revisões</div>
+                    <div class="button">Perfil</div>
+                </div>
+            </div>
+            <div class="rightcolumn">
+                <div class="p-10">
+                    <div class="border shadow p-10 rounded">Novo cartao</div>
+                    <div class="border shadow p-10 rounded mt-10">Novo cartao</div>
+                </div>
+                <!-- <div v-for="comentario in comentarios">
+                    {{ comentario.usuario }}<br>{{ comentario.comentario }}
+                </div> -->
+            </div>
+        </div>
+    </main>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                comentarios: [
+                    { usuario: 'Usuario1', comentario: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus quos aliquid nemo! Ea voluptates veniam dolor sapiente inventore. Vitae in blanditiis eum. Eaque, esse facilis explicabo quam dignissimos expedita atque!' },
+                    { usuario: 'Usuario2', comentario: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates eveniet, et voluptatum quia voluptate ipsum rerum numquam perspiciatis architecto saepe perferendis nostrum fugit natus dolore, neque, vitae dolor sint excepturi.' },
+                    { usuario: 'Usuario3', comentario: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia minus obcaecati unde exercitationem accusantium commodi iusto distinctio consequatur vel dolorem voluptatibus nihil hic, accusamus aliquam facere iure nulla neque alias!' },
+                    { usuario: 'Usuario4', comentario: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim consequuntur quisquam dicta voluptates architecto voluptatum accusantium incidunt, odit eligendi nobis distinctio corporis aliquid quaerat fugit earum, repellendus sunt totam libero?' },
+                    { usuario: 'Usuario5', comentario: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi aliquam enim quaerat rem nesciunt perferendis laboriosam aperiam nemo ex assumenda accusantium obcaecati molestiae vero inventore eum qui, perspiciatis harum nihil.' },
+                ]
+            },
+            methods: {
+                addComentario() {
+                    this.comentarios.push({ usuario: 'Usuario X', comentario: 'Hello world!!!' });
+                },
+                clearComentarios() {
+                    this.comentarios = [];
+                }
+            }
+        });
+    </script>
+</body>
+</html>
