@@ -64,7 +64,13 @@ class UsuariosController {
         try {
             const email = request.body.email;
             const senha = crypto.createHash('md5').update(request.body.senha).digest('hex');
-            const usuario = await db.usuarios.findOne({ where: { email: email, senha_hash: senha, }, attributes: { exclude: ['senha_hash'] } });
+            const usuario = await db.usuarios.findOne({ 
+                where: { email: email, senha_hash: senha, }, 
+                attributes: { exclude: ['senha_hash'], },
+                include: [ 
+                    { model: db.portais, as: 'portais', },
+                ]
+            });
             if (usuario) {
                 usuario.setDataValue('token', UsuariosController.getToken(usuario.id));
                 ServerResponse.success(response, 'Login efetuado.', [ usuario ]);
