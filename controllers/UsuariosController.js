@@ -88,9 +88,9 @@ class UsuariosController {
     static async atualizarPerfil(request, response) {
         try {
             const path_image = request.usuario.id_usuario + '.' + uuid() + '.jpg';
-            const nome = request.body.publicante_nome.replace(/\s\s+/g, ' ');
-            const resumo = request.body.publicante_resumo.replace(/\s\s+/g, ' ');
-            const telefone = request.body.publicante_telefone = request.body.publicante_telefone.replace(/\D/g,'');
+            const nome = request.body.publicante_nome.trim().replace(/\s\s+/g, ' ');
+            const resumo = request.body.publicante_resumo.trim().replace(/\s\s+/g, ' ');
+            const telefone = request.body.publicante_telefone = request.body.publicante_telefone.trim().replace(/\D/g,'');
             const signedUrls = request.body.path_image ? [ storage.getUploadUrl(path_image) ] : [];
             await db.usuarios.update({ 
                 publicante_nome: nome, 

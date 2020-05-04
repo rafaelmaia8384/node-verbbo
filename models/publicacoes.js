@@ -26,6 +26,14 @@ module.exports = (sequelize, DataTypes) => {
                 return `https://${config.storage.bucketName}.${config.storage.endPoint}/${config.storage.folderName}/${image}`;
             },
         },
+        fonte: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        fonte_soundex: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
         titulo: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -58,14 +66,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        path_json: {
-            type: DataTypes.UUID,
+        content_json: {
+            type: DataTypes.TEXT,
             allowNull: false,
-            get() { 
-                const json = this.getDataValue('json');
-                return `https://${config.storage.bucketName}.${config.storage.endPoint}/${config.storage.folderName}/${json}`;
-            },
-        }
+        },
   }, {
       tableName: 'publicacoes',
       underscored: true,
@@ -73,6 +77,7 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: true,
       paranoid: true,
       indexes: [
+        { type: 'FULLTEXT', fields: ['fonte_soundex'] },
         { type: 'FULLTEXT', fields: ['titulo_soundex'] },
         { type: 'FULLTEXT', fields: ['sub_titulo_soundex'] },
         { type: 'FULLTEXT', fields: ['categorias_soundex'] },

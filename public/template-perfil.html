@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-200">
+    <div id="app">
+        <div class="mt-40 fixed w-6 hidden xl:block">
+            <div class="ml-1 a2a_kit a2a_kit_size_32 a2a_default_style">
+                <a class="mb-1 a2a_button_facebook"></a>
+                <a class="mb-1 a2a_button_twitter"></a>
+                <a class="mb-1 a2a_button_whatsapp"></a>
+                <a class="mb-1 a2a_button_telegram"></a>
+                <a class="mb-1 a2a_button_google_gmail"></a>
+                <a class="mb-1 a2a_button_linkedin"></a>
+                <a class="mb-1 a2a_button_email"></a>
+            </div>
+        </div>
+
+        <!-- Layout Busca -->
+        <div id="layoutBusca" class="fixed w-full h-screen hidden z-10" style="background-color: rgba(0, 0, 0, 0.8);">
+            <div class="w-full" style="background-color: #434442;">
+
+                <div class="bg-black h-2"></div>
+
+                <div class="relative">
+                    <div id="buttonFecharBusca" class="absolute w-6 h-6 cursor-pointer" style="right: 8px; top: 8px;">
+                        <i class="ml-1 fa fa-times" style="font-size: 22px; color: #cccccc;"></i>
+                    </div>
+
+                    <div class="h-16 flex items-end justify-center pb-2">
+                        <input class="p-2 bg-gray-200 rounded-md" style="font-size: 10px; width: 280px;" placeholder="Buscar conteúdo"></input>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <header class="border-b-4 border-gray-500" style="background-color: #434442;">
+            <div class="h-2" style="background-color: #1b1b1b;">
+            </div>
+            <div class="container m-auto h-16 flex items-center justify-between">
+                <div>
+                    <a href="#" class="ml-2" style="color: #43a047; font-size: 34px; font-weight: bold;">Verbbo<a class="mt-5" href="#" style="color: #43a047; font-size: 10px;">.com.br</a></a>
+                </div>
+                <div class="inline-flex items-center">
+
+                    <!-- Icone de busca -->
+                    <div class="sm:hidden inline-flex items-center"> 
+                        <div id="buttonBusca" class="flex items-center mr-1 rounded-md cursor-pointer" style="width: 26px; height: 26px; background-color: #cccccc;">
+                            <i class="ml-1 fa fa-search" style="font-size: 22px; color: #434442;"></i>
+                        </div>
+                        <div class="ml-1 mr-1 w-2 h-2 rounded-full" style="background-color: #cccccc;"></div>
+                    </div>
+
+                    <!-- Input de busca -->
+                    <div class="hidden sm:block relative">
+                        <div class="inline-flex items-center">
+                            <input class="p-2 bg-gray-200 rounded-md mr-1" style="font-size: 10px; width: 280px;" placeholder="Buscar conteúdo"></input>
+                            <div class="absolute" style="top: 3px; right: 22px;">
+                                <i class="fa fa-search" style="font-size: 22px; color: #aaa;"></i>
+                            </div>
+                            <div class="ml-1 mr-1 w-2 h-2 rounded-full" style="background-color: #cccccc;"></div>
+                        </div>
+                    </div>
+                    <div class="pr-4">
+                        <a href="#"><i class="fa fa-facebook-square ml-1" style="font-size: 30px; color: #cccccc;"></i></a>
+                        <a href="#"><i class="fa fa-instagram ml-1" style="font-size: 30px; color: #cccccc;"></i></a>
+                        <a href="#"><i class="fa fa-twitter-square ml-1" style="font-size: 30px; color: #cccccc;"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-400 p-2 flex items-center justify-center">
+                <div>
+                    <a href="#" class="p-1 sm:p-2 md:py-3 lg:p-4 xl:p-5 text-gray-700 hover:text-green-700" style="font-size: calc(8px + 0.2vmax);">Política</a>
+                    <a href="#" class="p-1 sm:p-2 md:py-3 lg:p-4 xl:p-5 text-gray-700 hover:text-green-700" style="font-size: calc(8px + 0.2vmax);">Economia</a>
+                    <a href="#" class="p-1 sm:p-2 md:py-3 lg:p-4 xl:p-5 text-gray-700 hover:text-green-700" style="font-size: calc(8px + 0.2vmax);">Saúde</a>
+                    <a href="#" class="p-1 sm:p-2 md:py-3 lg:p-4 xl:p-5 text-gray-700 hover:text-green-700" style="font-size: calc(8px + 0.2vmax);">Segurança</a>
+                    <a href="#" class="p-1 sm:p-2 md:py-3 lg:p-4 xl:p-5 text-gray-700 hover:text-green-700" style="font-size: calc(8px + 0.2vmax);">Esportes</a>
+                </div>
+                <div class="lg:hidden">
+                    <a href="#" class=" p-1 sm:p-2 md:py-3 lg:p-4 xl:p-5 text-gray-700 hover:text-green-700" style="font-size: calc(8px + 0.2vmax);">Mais</a>
+                </div>
+                <div class="hidden lg:block ">
+                    <a href="#" class="p-1 sm:p-2 md:py-3 lg:p-4 xl:p-5 text-gray-700 hover:text-green-700" style="font-size: calc(8px + 0.2vmax);">Ciência e Tecnologia</a>
+                    <a href="#" class="p-1 sm:p-2 md:py-3 lg:p-4 xl:p-5 text-gray-700 hover:text-green-700" style="font-size: calc(8px + 0.2vmax);">Artes</a>
+                    <a href="#" class="p-1 sm:p-2 md:py-3 lg:p-4 xl:p-5 text-gray-700 hover:text-green-700" style="font-size: calc(8px + 0.2vmax);">Turismo</a>
+                    <a href="#" class="p-1 sm:p-2 md:py-3 lg:p-4 xl:p-5 text-gray-700 hover:text-green-700" style="font-size: calc(8px + 0.2vmax);">Moda e Beleza</a>
+                    <a href="#" class="p-1 sm:p-2 md:py-3 lg:p-4 xl:p-5 text-gray-700 hover:text-green-700" style="font-size: calc(8px + 0.2vmax);">Entretenimento</a>
+                    <a href="#" class="p-1 sm:p-2 md:py-3 lg:p-4 xl:p-5 text-gray-700 hover:text-green-700" style="font-size: calc(8px + 0.2vmax);">Educação</a>
+                </div>
+            </div>
+        </header> 
+
+        <main class="container m-auto max-w-5xl">
+            
+            <div class="pt-6 flex bg-white pb-10">
+
+                <div class="p-3">
+
+                    <div class="pl-3">
+
+                        <!-- Perfil -->
+                        <div class="mt-6 max-w-5xl">
+                            <div class="flex items-center">
+                                <img class="rounded-full mt-2 h-24 w-24" src="./img/profile.jpg" alt="Imagem de perfil">
+                                <div class="mt-1 pl-3 max-w-sm">
+                                    <i class="endtext-gray-700" style="font-size: 14px;">Raquel Lemos</i>
+                                    <p class="mt-2 text-gray-500" style="font-size: calc(8px + 0.2vmax);">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet laborum alias nisi molestias esse sit iure, exercitationem doloribus. Accusantium mollitia pariatur rem esse eligendi ab ea laborum cumque reprehenderit praesentium.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Compartilhar -->
+                        <div class="mt-4 mb-4">
+                            <span class="text-gray-800" style="font-size: calc(8px + 0.2vmax);">Compartilhe nas redes sociais</span>
+                            <div class="mt-1 a2a_kit a2a_kit_size_32 a2a_default_style">
+                                <a class="a2a_button_facebook"></a>
+                                <a class="a2a_button_twitter"></a>
+                                <a class="a2a_button_whatsapp"></a>
+                                <a class="a2a_button_telegram"></a>
+                                <a class="a2a_button_google_gmail"></a>
+                                <a class="a2a_button_linkedin"></a>
+                                <a class="a2a_button_email"></a>
+                            </div>
+                            <script async src="https://static.addtoany.com/menu/page.js"></script>
+                        </div>
+
+                        <!-- Título divisor -->
+                        <div class="flex justify-start mt-4">
+                            <p class="text-gray-600 text-md border-b-2 border-gray-600 p-1 mb-3" style="font-size: calc(10px + 0.6vmax);">Conteúdos deste publicante</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Layout conteúdos -->
+                    <div id="layoutConteudos" class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-3">    
+                    </div>
+
+                    <!-- Título divisor -->
+                    <div class="flex justify-start ml-3 mt-4">
+                        <p class="text-gray-600 text-md border-b-2 border-gray-600 p-1 mb-3" style="font-size: calc(10px + 0.6vmax);">Veja também</p>
+                    </div>
+
+                    <!-- Layout veja também -->
+                    <div id="layoutVejaTambem" class="mt-3 grid grid-cols-2 gap-3">    
+                    </div>
+
+                </div>
+
+                <div id="layoutLateral" class="hidden md:block flex-1 ml-3 mr-6">
+
+                    <!-- Layout Ads -->
+                    <div id="layoutAds"></div>
+
+                    <!-- Título divisor -->
+                    <div class="flex justify-start mt-4">
+                        <p class="text-gray-600 text-md border-b-2 border-gray-600 p-1 mb-3" style="font-size: calc(10px + 0.6vmax);">Destaques</p>
+                    </div>
+
+                    <!-- Layout Ads -->
+                    <div id="layoutDestaques" class="hidden md:block flex-1 mt-3"></div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t-4 border-gray-500">
+            <div class="p-12 bg-gray-200">
+                <div class="flex justify-center ">
+                    <a href="#"><i class="fa fa-facebook-square ml-2 mr-2" style="font-size: 32px; color: #888888;"></i></a>
+                    <a href="#"><i class="fa fa-instagram ml-2 mr-2" style="font-size: 32px; color: #888888;"></i></a>
+                    <a href="#"><i class="fa fa-twitter-square ml-2 mr-2" style="font-size: 32px; color: #888888;"></i></a>
+                </div>
+                <div class="mt-2 flex justify-center text-gray-500" style="font-size: 10px;">
+                    <p>© Global Inotec Ltda</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(() => {
+
+            $('#buttonBusca').click(() => {
+                $('#layoutBusca').fadeIn(100);
+            });
+
+            $('#buttonFecharBusca').click(() => {
+                $('#layoutBusca').fadeOut(200);
+            });
+
+            if ($('#layoutLateral').is(':visible')) {
+
+                for (var i = 0; i < 3; i++) {
+                    const e = `<div class="mb-3" style="width: 320px; height: 320px; background-color: #ccc;"></div>`;
+                    $('#layoutAds').append(e);
+                }
+
+                for (var i = 0; i < 5; i++) {
+                    const e = `
+                    <div class="flex items-center mb-3 p-3 rounded-md hover:shadow-2xl cursor-pointer">
+                        <a href="#" class="inline-flex">
+                            <div>
+                                <div class="w-20 h-20 rounded-sm bg-green-200"></div>
+                            </div>
+                            <div class="ml-3 text-gray-500 text-sm">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam dignissimos officiis voluptatem eaque blanditiis tenetur.
+                            </div>
+                        </a>
+                    </div>
+                    `;
+                    $('#layoutDestaques').append(e);
+                }
+            }
+
+            for (var i = 0; i < 10; i++) {
+                const e = `
+                <div class="flex items-center mb-3 p-3 rounded-md hover:shadow-2xl cursor-pointer">
+                    <a href="#" class="inline-flex">
+                        <div>
+                            <div class="w-20 h-20 rounded-sm bg-green-200"></div>
+                        </div>
+                        <div class="ml-3 text-gray-500 text-sm">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam dignissimos officiis voluptatem eaque blanditiis tenetur.
+                        </div>
+                    </a>
+                </div>
+                `;
+                $('#layoutConteudos').append(e);
+            }
+
+            for (var i = 0; i < 10; i++) {
+                const e = `
+                <div class="cursor-pointer rounded-md hover:shadow-2xl p-3">
+                    <a href="#">
+                        <img src="./img/img.jpg" class="rounded-md bg-green-200"></img>
+                        <p class="mt-2 text-gray-900" style="font-size: calc(8px + 0.5vmax);">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam dignissimos officiis voluptatem eaque blanditiis tenetur.
+                        </p>
+                    </a>
+                </div>
+                `;
+                $('#layoutVejaTambem').append(e);
+            }
+        });
+    </script>
+</body>
+</html>

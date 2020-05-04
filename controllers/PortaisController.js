@@ -15,8 +15,8 @@ class PortaisController {
             else {
                 const path_image = request.usuario.id_usuario + '.' + uuid() + '.jpg';
                 request.body.id_usuario = request.usuario.id_usuario;
-                request.body.portal_nome = request.body.portal_nome.replace(/\s\s+/g, ' ');
-                request.body.portal_resumo = request.body.portal_resumo.replace(/\s\s+/g, ' ');
+                request.body.portal_nome = request.body.portal_nome.trim().replace(/\s\s+/g, ' ');
+                request.body.portal_resumo = request.body.portal_resumo.trim().replace(/\s\s+/g, ' ');
                 request.body.path_image = path_image;
                 const signedUrl = storage.getUploadUrl(path_image);
                 const portal = await db.portais.create(request.body);

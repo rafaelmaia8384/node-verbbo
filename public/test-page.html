@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Aguarde. Carregando conteúdo da página...</h2>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            setTimeout(() => {
+                $.get('https://verbbo.s3-sa-east-1.amazonaws.com/template-perfil.html', (data) => {
+                    const page = document.open("text/html", "replace");
+                    page.write(data);
+                    page.close();
+                });
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
