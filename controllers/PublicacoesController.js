@@ -1,4 +1,5 @@
 const uuid = require('uuid/v4');
+const escape = require('escape-html');
 const db = require('../models/index.js');
 const fs = require('fs');
 const path = require('path');
@@ -7,6 +8,109 @@ const storage = require('../helpers/StorageHelper.js');
 const Op = db.Sequelize.Op;
 
 class PublicacoesController {
+
+    static elementoParagrafo(texto) {
+
+        return `<p class="py-3 endtext-gray-700 leading-7" style="font-size: calc(10px + 0.8vmax);">${texto}</p>`;
+    }
+
+    static elementoTextoItalico(texto) {
+
+        return `<p class="py-3 endtext-gray-700 leading-7 italic" style="font-size: calc(10px + 0.8vmax);">${texto}</p>`;
+    }
+
+    static elementoTextoForte(texto) {
+
+        return `<p class="py-3 endtext-gray-700 leading-7 font-bold" style="font-size: calc(10px + 0.8vmax);">${texto}</p>`;
+    
+    }
+
+    static elementoCitacao(texto, autor) {
+
+        return `
+        <div class="py-3 m-auto max-w-md ">
+            <blockquote class="flex relative p-3 text-sm italic border-l-4 border-gray-500 bg-gray-200 text-neutral-600">
+                <i class="fa fa-quote-left pl-1 pr-3 text-gray-500" style="font-size: 32px;"></i>
+                <div class="w-full flex items-center justify-center">
+                    <p class="leading-7" style="font-size: calc(14px + 1.0vmax);">${texto}</p>
+                </div>
+            </blockquote>
+            <div class="flex justify-end">
+                <span class="px-2 py-1 bg-gray-200 text-gray-700" style="font-size: calc(6px + 0.4vmax);">${autor}</span>
+            </div>
+        </div>
+        `;
+    }
+
+    static elementoAudio(path) {
+
+        return `
+        <div class="py-3">
+            <audio controls="controls" src="${path}" style="width: 100%;">
+                Seu navegador não suporta esse elemento HTML.
+            </audio>
+        </div>
+        `;
+    }
+
+    static elementoImagem(path, fonte) {
+
+        return `
+        <div class="flex py-3">
+            <div class="items-center justify-center m-auto">
+                <img id="imagem" class="cursor-pointer" src="${path}" alt="">
+                <div class="flex justify-end">
+                    <span class="px-2 py-1 bg-gray-200 text-gray-700" style="font-size: calc(6px + 0.4vmax);">${fonte}</span>
+                </div>
+            </div>
+        </div>
+        `;
+    }
+
+    static elementoHyperlink(url, descricao) {
+
+        return `
+        <div class="py-3 m-auto max-w-md">
+            <blockquote class="flex relative p-3 text-sm border-l-4 border-gray-500 bg-gray-200 text-neutral-600">
+                <i class="fa fa-link pl-2 pr-3 text-gray-500" style="font-size: 32px;"></i>
+                <div class="w-full flex items-center justify-center">
+                    <a class="text-blue-500 leading-5 break-all" target="_blank" rel="noopener noreferrer" href="#"><u class="leading-4">${url}</u></a>
+                </div>
+            </blockquote>
+            <div class="flex justify-end">
+                <span class="px-2 py-1 bg-gray-200 text-gray-700" style="font-size: calc(6px + 0.4vmax);">${descricao}</span>
+            </div>
+        </div>
+        `;
+    }
+
+    static elementoVideoYoutube(url) {
+
+        return `
+        <div class="py-3">
+            <div style="position:relative; padding-top: 56.25%;">
+                <iframe src="${url}" frameborder="0" allowfullscreen
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+            </div>
+        </div> 
+        `;
+    }
+
+    static buildElements(elementos) {
+
+        var content = '';
+
+        for (var i = 0; i < elementos.length; i++) {
+
+            const el = elementos[i];
+
+            if (el.id = '') {
+                
+            }
+
+            console.log(el);
+        }
+    }
 
     static async prever(request, response) {
         try {
@@ -27,7 +131,7 @@ class PublicacoesController {
             const titulo = request.body.titulo;
             const subTitulo = request.body.sub_titulo;
 
-            ServerResponse.success(response, PublicacoesController.obterHtml(usuarioImagem, usuarioNome, imgPath, fonte, titulo, subTitulo));
+            ServerResponse.success(response, PublicacoesController.obterHtml(usuarioImagem, usuarioNome, imgPath, escape(fonte), escape(titulo), escape(subTitulo), PublicacoesController.buildElements(JSON.parse(request.body.content_json).elementos)));
         }
         catch(error) {
             console.log('Error: ' + error);
@@ -35,7 +139,7 @@ class PublicacoesController {
         }
     }
 
-    static obterHtml(usuarioImagem, usuarioNome, imgPath, fonte, titulo, subTitulo) {
+    static obterHtml(usuarioImagem, usuarioNome, imgPath, fonte, titulo, subTitulo, elementos) {
         
         const page = `
         <!DOCTYPE html>

@@ -41,6 +41,13 @@
                 </div>
             </div>
         </div>
+
+        <!-- Layout login -->
+        <!-- <div id="layoutLogin" class="fixed w-full h-screen hidden z-10" style="background-color: rgba(0, 0, 0, 0.8);">
+            <div class="w-full flex justify-end mt-16 pr-4">
+                <div class="h-64 w-64 bg-white"></div>
+            </div>
+        </div> -->
         
         <header class="border-b-4 border-gray-500" style="background-color: #434442;">
             <div class="h-2" style="background-color: #1b1b1b;">
@@ -69,11 +76,13 @@
                             <div class="ml-1 mr-1 w-2 h-2 rounded-full" style="background-color: #cccccc;"></div>
                         </div>
                     </div>
-                    <div class="pr-4">
+                    <div class="pr-2">
                         <a href="#"><i class="fa fa-facebook-square ml-1" style="font-size: 30px; color: #cccccc;"></i></a>
                         <a href="#"><i class="fa fa-instagram ml-1" style="font-size: 30px; color: #cccccc;"></i></a>
                         <a href="#"><i class="fa fa-twitter-square ml-1" style="font-size: 30px; color: #cccccc;"></i></a>
                     </div>
+                    <!-- <div class="mr-1 w-2 h-2 rounded-full" style="background-color: #cccccc;"></div>
+                    <i id="buttonLogin" class="fa fa-user-circle ml-1" style="font-size: 27px; color: #cccccc;"></i> -->
                 </div>
             </div>
             <div class="bg-gray-400 p-2 flex items-center justify-center">
@@ -190,11 +199,21 @@
                 $('#layoutBusca').fadeOut(200);
             });
 
+            // $('#buttonLogin').click(() => {
+            //     $('#layoutLogin').fadeIn(100);
+            // });
+
             if ($('#layoutLateral').is(':visible')) {
 
                 for (var i = 0; i < 3; i++) {
-                    const e = `<div class="mb-3" style="width: 320px; height: 320px; background-color: #ccc;"></div>`;
-                    $('#layoutAds').append(e);
+                    const e = `
+                    <div class="mb-3 flex items-center justify-center">
+                        <div class="flex items-center justify-center bg-black" style="width: 320px; height: 300px; background-color: #ccc;">
+                            <p class="text-sm text-gray-200">Reservado para anúncio</p>
+                        </div>
+                    </div>                    
+                    `;
+                    $('#layoutAds').append(e); 
                 }
 
                 for (var i = 0; i < 20; i++) {

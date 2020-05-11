@@ -112,6 +112,13 @@
         </header> 
 
         <main class="container m-auto max-w-5xl">
+
+            <!-- Anúncio -->
+            <div class="p-6 flex items-center justify-center">
+                <div class="flex items-center justify-center bg-black" style="width: 320px; height: 300px; background-color: #ccc;">
+                    <p class="text-sm text-gray-200">Reservado para anúncio</p>
+                </div>
+            </div>
             
             <div class="md:pt-6 flex bg-white pb-10">
 
@@ -394,7 +401,13 @@
             if ($('#layoutLateral').is(':visible')) {
 
                 for (var i = 0; i < 3; i++) {
-                    const e = `<div class="mb-3" style="width: 320px; height: 320px; background-color: #ccc;"></div>`;
+                    const e = `
+                    <div class="mb-3 flex items-center justify-center">
+                        <div class="flex items-center justify-center bg-black" style="width: 320px; height: 300px; background-color: #ccc;">
+                            <p class="text-sm text-gray-200">Reservado para anúncio</p>
+                        </div>
+                    </div>                    
+                    `;
                     $('#layoutAds').append(e); 
                 }
 
