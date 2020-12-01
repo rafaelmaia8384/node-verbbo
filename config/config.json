@@ -61,5 +61,45 @@
         "secretKey": "GPGte7plsHAmiZq8nGgxA7BRTnvlmissFDsSSBpG"
     },
     "tokenKey": "VERBBO-TOKEN-KEY-1234567890"
+  },
+  "VERBBO": {
+    "maintenance": false,
+    "versaoAtual": 1,
+    "fatorHierarquico": 10,
+    "categorias": [
+        { "id": 1, "nome": "Política" },
+        { "id": 2, "nome": "Economia" },
+        { "id": 3, "nome": "Saúde" },
+        { "id": 4, "nome": "Segurança" },
+        { "id": 5, "nome": "Esportes" },
+        { "id": 6, "nome": "Ciência e tecnologia" },
+        { "id": 7, "nome": "Artes" },
+        { "id": 8, "nome": "Turismo" },
+        { "id": 9, "nome": "Mode e beleza" },
+        { "id": 10, "nome": "Entretenimento" },
+        { "id": 11, "nome": "Educação" },
+        { "id": 12, "nome": "Outro" }
+    ],
+    "permissoes": [
+        { "id": 1, "nome": "01 Root" },
+        { "id": 2, "nome": "02 CEO" },
+        { "id": 3, "nome": "03 Administrador" },
+        { "id": 4, "nome": "04 Gestor" },
+        { "id": 5, "nome": "05 Supervisor de edição" },
+        { "id": 6, "nome": "06 Editor" }
+    ],
+    "financeiro": {
+        "metas": [
+            { "id": 1, "leituras": 1000, "valor": 7.47, "prazo": 15 },
+            { "id": 2, "leituras": 5000, "valor": 37.76, "prazo": 25 },
+            { "id": 3, "leituras": 10000, "valor": 76.33, "prazo": 35 },
+            { "id": 4, "leituras": 20000, "valor": 154.28, "prazo": 45 },
+            { "id": 5, "leituras": 50000, "valor": 389.76, "prazo": 55 },
+            { "id": 6, "leituras": 100000, "valor": 787.64, "prazo": 75 },
+            { "id": 7, "leituras": 150000, "valor": 1193.64, "prazo": 85 },
+            { "id": 8, "leituras": 500000, "valor": 4019.40, "prazo": 100 },
+            { "id": 9, "leituras": 1000000, "valor": 8120.00, "prazo": 120 }
+        ]
+    }
   }
 }

@@ -14,6 +14,7 @@ class StorageHelper {
             //s3ForcePathStyle: true,
         });
     }
+
     getUploadUrl(name) {
         try {
             const path = config.storage.folderName + '/' + name;
@@ -22,6 +23,24 @@ class StorageHelper {
                 Key: path,
                 ACL: 'public-read',
                 Expires: 60 * 10, // expira em 10 minutos
+            });
+        }
+        catch(error) {
+            console.log('Error: ' + error);
+            return null;
+        }
+    }
+
+    deleteObject(name) {
+        try {
+            const path = config.storage.folderName + '/' + name;
+            return this.s3.deleteObject({
+                Bucket: config.storage.bucketName,
+                Key: path,
+            }, (error, data) => {
+                if (error) {
+                    console.log('Error: ' + error);
+                }
             });
         }
         catch(error) {

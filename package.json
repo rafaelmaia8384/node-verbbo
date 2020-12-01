@@ -9,7 +9,10 @@
     "prod": "PORT=3000 NODE_ENV=production pm2 start app.js -i --name app",
     "dev_nodemon": "PORT=5000 NODE_ENV=development nodemon app.js",
     "test_nodemon": "PORT=4000 NODE_ENV=test nodemon app.js",
-    "prod_nodemon": "PORT=3000 NODE_ENV=production nodemon app.js"
+    "prod_nodemon": "PORT=3000 NODE_ENV=production nodemon app.js",
+    "dev_migrate": "NODE_ENV=development sequelize db:migrate",
+    "test_migrate": "NODE_ENV=test sequelize db:migrate",
+    "prod_migrate": "NODE_ENV=production sequelize db:migrate"
   },
   "author": "Rafael Paiviandre Maia",
   "license": "ISC",
@@ -20,10 +23,11 @@
     "escape-html": "^1.0.3",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
+    "limax": "^2.1.0",
     "moment": "^2.24.0",
     "mysql2": "^1.7.0",
     "nodemon": "^1.18.10",
-    "pm2": "^4.2.3",
+    "pm2": "^4.4.0",
     "sequelize": "^5.21.1",
     "uuid": "^3.3.3",
     "validar-cpf": "^2.1.2"

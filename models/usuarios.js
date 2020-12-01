@@ -1,4 +1,5 @@
 const uuid = require('uuid/v4');
+const configVerbbo = require('../config/configVerbbo.js');
 const config = require('../config/config.js');
 
 'use strict';
@@ -10,38 +11,67 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4
         },
-        publicante_nome: {
+        id_superior: {
+            type: DataTypes.UUID,
+            allowNull: true,
+        },
+        limite_hierarquico: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: configVerbbo.fatorHierarquico,
+        },
+        convite_ceo: {
+            type: DataTypes.UUID,
+            allowNull: false,
+            defaultValue: DataTypes.UUIDV4
+        },
+        convite_administrador: {
+            type: DataTypes.UUID,
+            allowNull: false,
+            defaultValue: DataTypes.UUIDV4
+        },
+        convite_gestor: {
+            type: DataTypes.UUID,
+            allowNull: false,
+            defaultValue: DataTypes.UUIDV4
+        },
+        convite_supervisor: {
+            type: DataTypes.UUID,
+            allowNull: false,
+            defaultValue: DataTypes.UUIDV4
+        },
+        convite_editor: {
+            type: DataTypes.UUID,
+            allowNull: false,
+            defaultValue: DataTypes.UUIDV4
+        },
+        nome: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        publicante_resumo: {
+        resumo: {
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        publicante_nome_completo: {
+        nome_completo: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        publicante_cpf: {
+        cpf: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        publicante_data_nascimento: {
+        data_nascimento: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        publicante_telefone: {
+        telefone: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        email_verificado: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            defaultValue: false,
         },
         senha_hash: {
             type: DataTypes.STRING,
@@ -54,20 +84,28 @@ module.exports = (sequelize, DataTypes) => {
                 const image = this.getDataValue('path_image');
                 return `https://${config.storage.bucketName}.${config.storage.endPoint}/${config.storage.folderName}/${image}`;
             },
-        }
+        },
+        bloqueado: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
+        },
+        bloqueado_motivo: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
   }, {
       tableName: 'usuarios',
       underscored: true,
       underscoredAll: true,
       timestamps: true,
       paranoid: true,
-      indexes: [
-         { fields: ['publicante_cpf'] },
-      ],
   });
   usuarios.associate = function(models) {
-    usuarios.hasMany(models.portais, {foreignKey: 'id_usuario', as: 'portais'});
     usuarios.hasMany(models.publicacoes, {foreignKey: 'id_usuario', as: 'publicacoes'});
+    usuarios.hasMany(models.usuarios_permissoes, {foreignKey: 'id_usuario', as: 'permissoes'});
+    usuarios.hasMany(models.usuarios_avisos, {foreignKey: 'id_usuario', as: 'avisos'});
+    usuarios.hasOne(models.usuarios_analises, {foreignKey: 'id_usuario', as: 'analise'});
   };
   //usuarios.sync();
   return usuarios;

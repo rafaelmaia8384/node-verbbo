@@ -12,12 +12,28 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
         },
         id_publicacao: {
-            type: DataTypes.STRING,
+            type: DataTypes.UUID,
             allowNull: false,
         },
         ip: {
-            type: DataTypes.STRING(16),
+            type: DataTypes.STRING,
             allowNull: false,
+        },
+        latitude: {
+            type: DataTypes.DECIMAL(10, 8),
+            allowNull: false,
+        },
+        longitude: {
+            type: DataTypes.DECIMAL(11, 8),
+            allowNull: false,
+        },
+        leitura_inicio: {
+            type: DataTypes.DATE,
+            allowNull: true,
+        },
+        leitura_fim: {
+            type: DataTypes.DATE,
+            allowNull: true,
         },
   }, {
       tableName: 'publicacoes_metricas',
@@ -25,9 +41,6 @@ module.exports = (sequelize, DataTypes) => {
       underscoredAll: true,
       timestamps: true,
       paranoid: true,
-      indexes: [
-         { fields: ['ip'] },
-      ],
   });
   publicacoes_metricas.associate = function(models) {
     publicacoes_metricas.belongsTo(models.publicacoes, {foreignKey: 'id_publicacao'});

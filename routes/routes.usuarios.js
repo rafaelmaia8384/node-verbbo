@@ -1,16 +1,17 @@
 const express = require('express');
-const db = require('../models/index.js');
-const config = require('../config/config.js');
 const UsuariosController = require('../controllers/UsuariosController.js');
 const checkToken = require('../middleware/checkToken.js');
 const usuariosRouter = express.Router();
 
-usuariosRouter.post('/cadastrar', UsuariosController.cadastrarUsuario);
 usuariosRouter.post('/login', UsuariosController.login);
-usuariosRouter.post('/atualizarperfil', (checkToken), UsuariosController.atualizarPerfil);
-usuariosRouter.post('/alterarsenha', (checkToken), UsuariosController.alterarSenha);
+usuariosRouter.post('/cadastrar', UsuariosController.cadastrarUsuario);
+usuariosRouter.get('/obterAvisos/:ultimaData?', (checkToken), UsuariosController.obterAvisos);
+usuariosRouter.get('/obterUsuarios/:permissao/:ultimaData', (checkToken), UsuariosController.obterUsuarios);
+usuariosRouter.get('/perfil/:id', (checkToken), UsuariosController.perfil);
+usuariosRouter.post('/atualizarPerfil', (checkToken), UsuariosController.atualizarPerfil);
+usuariosRouter.post('/alterarSenha', (checkToken), UsuariosController.alterarSenha);
+usuariosRouter.post('/despacharCadastro/:id', (checkToken), UsuariosController.despacharCadastro);
 // usuariosRouter.delete('/excluir', (check), UsuariosController.excluirUsuario);
-// usuariosRouter.get('/heatmap', (check), UsuariosController.obterHeadMap);
 // usuariosRouter.get('/listar/:lat/:lon/:distance', (check), UsuariosController.listarUsuarios);
 // usuariosRouter.get('/perfil/:id', (check), UsuariosController.obterPerfil);
 // usuariosRouter.get('/estatisticas', (check), UsuariosController.obterEstatisticas);

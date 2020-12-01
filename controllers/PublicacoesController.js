@@ -1,8 +1,9 @@
 const uuid = require('uuid/v4');
 const escape = require('escape-html');
-const db = require('../models/index.js');
 const fs = require('fs');
 const path = require('path');
+const slug = require('limax');
+const db = require('../models/index.js');
 const ServerResponse = require('../helpers/ServerResponse.js');
 const storage = require('../helpers/StorageHelper.js');
 const Op = db.Sequelize.Op;
@@ -22,7 +23,6 @@ class PublicacoesController {
     static elementoTextoForte(texto) {
 
         return `<p class="py-3 endtext-gray-700 leading-7 font-bold" style="font-size: calc(10px + 0.8vmax);">${texto}</p>`;
-    
     }
 
     static elementoCitacao(texto, autor) {
@@ -125,11 +125,13 @@ class PublicacoesController {
             const usuario = await db.usuarios.findOne({ where: { id: request.usuario.id_usuario } });
 
             const usuarioImagem = usuario.path_image;
-            const usuarioNome = usuario.publicante_nome;
+            const usuarioNome = usuario.nome;
             const imgPath = request.body.path_image;
             const fonte = request.body.fonte;
             const titulo = request.body.titulo;
             const subTitulo = request.body.sub_titulo;
+
+            console.log(request.body.path_image);
 
             ServerResponse.success(response, PublicacoesController.obterHtml(usuarioImagem, usuarioNome, imgPath, escape(fonte), escape(titulo), escape(subTitulo), PublicacoesController.buildElements(JSON.parse(request.body.content_json).elementos)));
         }
