@@ -15,8 +15,8 @@
         "endPoint": "s3-sa-east-1.amazonaws.com",
         "bucketName": "verbbo",
         "folderName": "dev",
-        "accessKey": "AKIAXKILMFYEEFJ44WN5",
-        "secretKey": "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"
+        "accessKey": "",
+        "secretKey": ""
     },
     "tokenKey": "VERBBO-TOKEN-KEY-1234567890"
   },
